@@ -1,27 +1,35 @@
 <template>
-  <v-toolbar
-    width="100%"
-    flat
+  <v-app-bar
     color="light-grey"
-    class="py-5 px-5 navbar"
+    flat
+    app
+    absolute
+    height="80"
+    class="navbar"
   >
-    <router-link to="/">
+    <router-link
+      to="/">
       <v-toolbar-title>
         <v-img src="../assets/logo.svg" alt="Best Service"/>
       </v-toolbar-title>
     </router-link>
     <v-spacer></v-spacer>
-    <v-btn
+    <router-link
       v-for="(button, i) in buttons"
+      :to="button.link.url"
       :key="i"
-      :color="button.bg"
-      :dark="button.dark"
-      class="ml-5 btn"
-      elevation="0"
+      style="text-decoration: none;"
     >
-      <span>{{ button.text }}</span>
-    </v-btn>
-  </v-toolbar>
+      <v-btn
+        :color="button.bg"
+        :dark="button.dark"
+        class="ml-5 btn"
+        elevation="0"
+      >
+        <span>{{ button.text }}</span>
+      </v-btn>
+    </router-link>
+  </v-app-bar>
 </template>
 
 <script lang="ts">
@@ -72,9 +80,9 @@ export default class Navbar extends Vue {
   ]
 }
 </script>
-
-<style scoped>
-  .navbar {
-    height: unset !important;
+<style lang="scss">
+  .navbar .v-toolbar__content {
+    margin: auto;
+    max-width: 1300px;
   }
 </style>

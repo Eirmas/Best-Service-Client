@@ -1,8 +1,14 @@
 <template>
-    <div>
-      <v-container>
+    <div
+      :id="data.id || false"
+      :class="data.background ? data.background : ''"
+      style="background:white;"
+    >
+      <v-container
+        style="max-width:980px;"
+      >
         <div>
-          <h1 class="text-center pb-15">Kom i gang</h1>
+          <h1 class="text-center pb-15 blue--text">Kom i gang</h1>
         </div>
         <div
           ref="scheme"
@@ -104,6 +110,8 @@ import Component from 'vue-class-component'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
+import { Prop } from 'vue-property-decorator'
+import { BlockData } from '@/components/types'
 
 gsap.registerPlugin(ScrollTrigger)
 gsap.registerPlugin(ScrollToPlugin)
@@ -119,6 +127,7 @@ interface VueElement extends Vue {
   }
 })
 export default class Schema extends Vue {
+  @Prop() data!: BlockData
   $refs!: {
     form: VueElement;
     scheme: HTMLElement;

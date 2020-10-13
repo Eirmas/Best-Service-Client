@@ -9,23 +9,61 @@ export interface SectionText {
     content: string;
     icon?: string;
   }[];
-  button?: {
-    text: string;
-    href: string;
-  };
+  button?: Link;
 }
+
+export interface Link {
+  text: string;
+  href: string;
+}
+
 export interface Block {
   type: BlockType;
-  data: BlockSectionData;
+  data?: BlockSectionData | BlockCardsData | BlockContactsData;
 }
 
 export enum BlockType {
-  SCHEMA = 'SCHEMA',
-  CARDS = 'CARDS',
-  SECTION = 'SECTION'
+  SCHEMA = 'Schema',
+  CARDS = 'Cards',
+  HEAD = 'Head',
+  SECTION = 'Section',
+  CONTACTS = 'Contacts'
 }
 
-export interface BlockSectionData {
+export interface Card {
+  title: string;
+  image: Image;
+  text: string;
+  button: Link;
+}
+
+export interface Contact {
+  name: string;
+  title: string;
+  email: string;
+  phone: number;
+  image: Image;
+}
+
+export interface BlockContactsData extends BlockData {
+  title: string;
+  caption?: string;
+  contacts: Contact[];
+}
+
+export interface BlockCardsData extends BlockData {
+  title: string;
+  caption: string;
+  cards: Card[];
+}
+
+export interface BlockData {
+  background?: string;
+  blob?: boolean;
+  id?: string;
+}
+
+export interface BlockSectionData extends BlockData {
   left?: {
     type: BlockSection;
     data: SectionText | Image;

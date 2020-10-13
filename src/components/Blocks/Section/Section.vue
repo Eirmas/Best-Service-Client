@@ -1,6 +1,7 @@
 <template>
   <div
-    class="py-15 my-10 wrapper"
+    :id="data.id || false"
+    :class="['wrapper', (data.blob) ? 'blob' : '', (data.background) ? data.background : '']"
   >
     <v-container>
       <v-row
@@ -53,6 +54,9 @@ export default class Section extends Vue {
 
 <style scoped>
   .wrapper {
+    padding: 5rem 0;
+  }
+  .blob {
     background-image: url("~@/assets/images/blob2.svg");
     background-position-x: -100px;
     background-size: 300px;

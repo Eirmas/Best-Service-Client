@@ -195,11 +195,6 @@ $grey-light: #F9FBFF;
   border-color: $grey-light !important;
  }
 }
-@media (min-width: 1264px) {
-  .container {
-    max-width: 900px;
-  }
-}
 
 .v-btn {
  text-transform: unset;

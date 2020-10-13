@@ -6,10 +6,14 @@
           <div class="index__top-left">
             <h1>Vi verdsetter <span ref="text" class="app__head-title-text">{{ lines[currentLine % lines.length] }}</span></h1>
             <p>Levert med tillit og stolthet siden 2002</p>
-            <v-btn
-              color="orange"
-              dark
-            >Send mail</v-btn>
+            <router-link
+              to="#skjema"
+            >
+              <v-btn
+                color="orange"
+                dark
+              >Send mail</v-btn>
+            </router-link>
           </div>
         </v-col>
       </v-row>

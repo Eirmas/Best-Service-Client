@@ -8,11 +8,14 @@
       :key="i"
       class="pb-5 d-flex"
     >
-      <div class="pr-3">
+      <div
+        v-if="text.icon"
+        class="pr-3"
+      >
         <v-icon v-text="`$vuetify.icons.${text.icon}`"/>
       </div>
       <div>
-        <span>{{ text.content }}</span>
+        <span v-html="text.content" />
       </div>
     </div>
     <v-btn
@@ -56,15 +59,7 @@ export default class Column extends Vue {
 <style lang="scss">
   .section__left .column__img {
     border-radius: 10px 50px 10px 10px !important;
-  }
-
-  .section__right .column__img {
-    border-radius: 50px 10px 10px 10px !important;
-  }
-  .column__img {
-    position: relative;
-    z-index: 1;
-    &:before {
+    &:after {
       content: '';
       width: 70px;
       height: 70px;
@@ -75,7 +70,7 @@ export default class Column extends Vue {
       background-size: cover;
       position: absolute;
     }
-    &:after {
+    &:before {
       content: '';
       width: 70px;
       height: 70px;
@@ -87,5 +82,36 @@ export default class Column extends Vue {
       background-size: cover;
       position: absolute;
     }
+  }
+
+  .section__right .column__img {
+    border-radius: 50px 10px 10px 10px !important;
+    &:before {
+      content: '';
+      width: 70px;
+      height: 70px;
+      left: -17px;
+      bottom: -12px;
+      background-image: url('~@/assets/images/grid.svg');
+      background-position: center;
+      background-size: cover;
+      position: absolute;
+    }
+    &:after {
+      content: '';
+      width: 70px;
+      height: 70px;
+      right: -30px;
+      bottom: -20px;
+      z-index: -1;
+      background-image: url('~@/assets/images/circle-orange.svg');
+      background-position: center;
+      background-size: cover;
+      position: absolute;
+    }
+  }
+  .column__img {
+    position: relative;
+    z-index: 1;
   }
 </style>

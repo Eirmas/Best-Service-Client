@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Vuetify from 'vuetify/lib'
 import colors from '@/assets/scss/variables.scss'
 import Checkmark from '@/assets/images/Checkmark.vue'
+import Phone from '@/assets/images/Phone.vue'
+import Mail from '@/assets/images/Mail.vue'
 
 Vue.use(Vuetify)
 
@@ -10,6 +12,12 @@ export default new Vuetify({
     values: {
       checkmark: {
         component: Checkmark
+      },
+      mail: {
+        component: Mail
+      },
+      phone: {
+        component: Phone
       }
     }
   },

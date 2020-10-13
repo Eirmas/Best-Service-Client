@@ -3,15 +3,18 @@ import App from './App.vue'
 import router from './router'
 import VueAnalytics from 'vue-analytics'
 import vuetify from './plugins/vuetify'
+import store from './store'
 
 Vue.config.productionTip = false
 Vue.use(VueAnalytics, {
   id: 'UA-180286010-1',
+  sendHitTask: process.env.NODE_ENV === 'production',
   router
 })
 
 new Vue({
   router,
   vuetify,
+  store,
   render: (h) => h(App)
 }).$mount('#app')
