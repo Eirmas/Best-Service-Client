@@ -2,12 +2,17 @@
   <div class="app__head index__top py-15">
     <v-container>
       <v-row id="top" class="py-15 my-5">
-        <v-col cols="12" style="z-index: 2">
+        <v-col
+          cols="12"
+          class="pl-5 pl-sm-15 pl-md-3 pl-lg-3 pl-xl-3"
+          style="z-index: 2"
+        >
           <div class="index__top-left">
-            <h1>Vi verdsetter <span ref="text" class="app__head-title-text">{{ lines[currentLine % lines.length] }}</span></h1>
+            <h1 class="index__top-header">Vi verdsetter <span ref="text" class="app__head-title-text">{{ lines[currentLine % lines.length] }}</span></h1>
             <p>Levert med tillit og stolthet siden 2002</p>
             <router-link
               to="#skjema"
+              class="text-decoration-none"
             >
               <v-btn
                 color="orange"
@@ -75,6 +80,12 @@ export default class Head extends Vue {
           padding-left:12px;
         }
       }
+    }
+  }
+
+  @media (max-width: 599px) {
+    .index__top-header {
+      font-size: 26px;
     }
   }
 </style>

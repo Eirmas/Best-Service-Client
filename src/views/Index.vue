@@ -9,9 +9,7 @@
         :key="i"
       />
     </v-main>
-    <div class="app__footer">
-      <div />
-    </div>
+    <Footer />
   </div>
 </template>
 
@@ -26,6 +24,7 @@ import Schema from '@/components/Blocks/Schema/Schema.vue'
 import Head from '@/components/Head.vue'
 import { page } from 'vue-analytics'
 import Contacts from '@/components/Blocks/Contacts/Contacts.vue'
+import Footer from '@/components/Footer.vue'
 
   @Component({
     name: 'Index',
@@ -35,7 +34,8 @@ import Contacts from '@/components/Blocks/Contacts/Contacts.vue'
       Section,
       Head,
       Cards,
-      Contacts
+      Contacts,
+      Footer
     }
   })
 export default class Index extends Vue {
@@ -81,18 +81,6 @@ export default class Index extends Vue {
         caption: 'Vi spesialiserer oss på logistikktjenester',
         cards: [
           {
-            title: 'Avfall og makulering',
-            text: 'Vi tilbyr fjerning og transport av de aller fleste typer avfall, og har samarbeidsavtale med sentrale aktører i Oslo-området. Vårt fokus er spesielt på EE-Avfall og sikkerhetsmakulering.',
-            image: {
-              src: require('@/assets/images/waste.svg'),
-              alt: 'Søppelkasse'
-            },
-            button: {
-              text: 'Les mer',
-              href: '/avfall'
-            }
-          },
-          {
             title: 'Transport',
             text: 'Vi tilbyr transport med flere forskjellige biltyper. Alt fra små budbiler til tunge lastebilder med sideåpning. Ta kontakt så finner vi det rette for deg.',
             image: {
@@ -115,6 +103,18 @@ export default class Index extends Vue {
               text: 'Les mer',
               href: '/lager'
             }
+          },
+          {
+            title: 'Avfall og makulering',
+            text: 'Vi tilbyr fjerning og transport av de aller fleste typer avfall, og har samarbeidsavtale med sentrale aktører i Oslo-området. Vårt fokus er spesielt på EE-Avfall og sikkerhetsmakulering.',
+            image: {
+              src: require('@/assets/images/waste.svg'),
+              alt: 'Søppelkasse'
+            },
+            button: {
+              text: 'Les mer',
+              href: '/avfall'
+            }
           }
         ]
       }
@@ -131,10 +131,10 @@ export default class Index extends Vue {
             heading: 'Om oss',
             text: [
               {
-                content: 'Vi i <span style="font-weight: 500">Best Service</span> skal være best på gjennomføring, punktlighet, kvalitet og service. Oppgavene utføres til fornuftige og konkurransedyktige priser og vi har dyktige, løsningsorienterte serviceinnstilte medarbeidere.'
+                content: 'Vi i Best Service skal være best på gjennomføring, punktlighet, kvalitet og service. Oppgavene utføres til fornuftige og konkurransedyktige priser og vi har dyktige, løsningsorienterte serviceinnstilte medarbeidere.'
               },
               {
-                content: '<b>Senk skuldrene - vi fikser!</b>'
+                content: '<i>Senk skuldrene - vi fikser!</i>'
               }
             ]
           }
@@ -163,22 +163,12 @@ export default class Index extends Vue {
         title: 'Kontakt oss',
         contacts: [
           {
-            title: 'Daglig Leder',
-            name: 'Svein Werner',
-            email: 'svein@best-service.no',
-            phone: 40691800,
-            image: {
-              src: require('@/assets/images/svein.jpg'),
-              alt: 'Svein Werner'
-            }
-          },
-          {
             title: 'Kjørekontor',
             name: 'Ronald Weiby',
             email: 'ronald@best-service.no',
             phone: 92893696,
             image: {
-              src: require('@/assets/images/svein.jpg'),
+              src: require('@/assets/images/ronald.jpg'),
               alt: 'Ronald Weiby'
             }
           },
@@ -188,7 +178,7 @@ export default class Index extends Vue {
             email: 'morten@best-service.no',
             phone: 90018275,
             image: {
-              src: require('@/assets/images/svein.jpg'),
+              src: require('@/assets/images/morten.jpg'),
               alt: 'Morten Skårstad'
             }
           }
@@ -204,4 +194,7 @@ export default class Index extends Vue {
 </script>
 
 <style lang="scss">
+  body {
+    overflow: hidden;
+  }
 </style>
