@@ -6,12 +6,13 @@
     <v-container>
       <v-row
         align="center"
+        :class="(data.left.type === BlockSection.IMAGE) ? 'flex-wrap-reverse' : ''"
       >
         <v-col
           v-if="data.left"
           cols="12"
-          md="6"
-          class="section__left pr-10"
+          sm="6"
+          class="section__left pr-md-10 pl-sm-6"
         >
           <Column
             :type="data.left.type"
@@ -21,8 +22,8 @@
         <v-col
           v-if="data.right"
           cols="12"
-          md="6"
-          class="section__right pl-10"
+          sm="6"
+          class="section__right pl-md-10 pl-sm-6"
         >
           <Column
             :type="data.right.type"
@@ -38,7 +39,7 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
 import { Prop } from 'vue-property-decorator'
-import { BlockSectionData } from '@/components/types'
+import { BlockSection, BlockSectionData } from '@/components/types'
 import Column from '@/components/Blocks/Section/Column.vue'
 
 @Component({
@@ -49,16 +50,36 @@ import Column from '@/components/Blocks/Section/Column.vue'
 })
 export default class Section extends Vue {
   @Prop() data!: BlockSectionData
+  BlockSection = BlockSection
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   .wrapper {
     padding: 5rem 0;
   }
   .blob {
-    background-image: url("~@/assets/images/blob2.svg");
-    background-position-x: -100px;
-    background-size: 300px;
+    position: relative;
+    z-index: 0;
+    &:before {
+      content: '';
+      width: 300px;
+      height: 300px;
+      left: -100px;
+      top: 30px;
+      z-index: -1;
+      background-image: url('~@/assets/images/blob2.svg');
+      background-position: center;
+      background-size: cover;
+      position: absolute;
+    }
+  }
+  @media (max-width: 599px) {
+    .blob::before {
+      transform: rotate(150deg);
+      left: unset;
+      right: -100px;
+      top: -30px;
+    }
   }
 </style>

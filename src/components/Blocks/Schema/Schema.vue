@@ -5,7 +5,7 @@
       style="background:white;"
     >
       <v-container
-        style="max-width:980px;"
+        style="max-width:900px;"
       >
         <div>
           <h1 class="text-center pb-15 blue--text">Kom i gang</h1>
@@ -192,7 +192,6 @@ export default class Schema extends Vue {
   }
 
   onResize () {
-    console.log('Resize')
     if (this.timeline) {
       if (this.timeline.isActive()) {
         if (!this.timeline.paused()) {
@@ -309,12 +308,22 @@ export default class Schema extends Vue {
       timeline.to(form.el, {
         height: `${content.height}px`,
         ease: 'bounce',
+        duration: 1
+      })
+      timeline.to(form.el, {
+        height: 'unset',
+        ease: 'bounce',
         duration: 1,
         onComplete: () => {
           timeline.pause()
         }
       })
       // Down
+      timeline.to(form.el, {
+        height: `${content.height}px`,
+        ease: 'bounce',
+        duration: 0
+      })
       timeline.to(window, {
         duration: 0.5,
         ease: 'ease-in-out',
@@ -480,6 +489,10 @@ export default class Schema extends Vue {
         margin: auto 0;
         overflow-y: hidden;
         top: 50%;
+        -webkit-box-shadow: 0 20px 70px 0 rgba(116,134,177,0.2) !important;
+        -moz-box-shadow: 0 20px 70px 0 rgba(116,134,177,0.2) !important;
+        box-shadow: 0 20px 70px 0 rgba(116,134,177,0.2) !important;
+        border: 1px solid #F3D4BD;
         transform: translateY(-50%) scale(1);
         .schema__form-content {
           padding: 1.875rem 2.675rem;
@@ -508,7 +521,7 @@ export default class Schema extends Vue {
           top: -1px;
           height: 90%;
           position: absolute;
-          background-color: #D2D2D2;
+          background-color: #E8A27C;
         }
       }
       .schema__letter-top {

@@ -8,7 +8,11 @@ const routes: Array<RouteConfig> = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    meta: {
+      auth: false,
+      title: 'Best Service - Hjem'
+    }
   }
 ]
 

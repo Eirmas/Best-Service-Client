@@ -8,12 +8,14 @@
           <h1 class="text-center blue--text">{{ data.title }}</h1>
           <p class="text-center blue--text">{{ data.caption }}</p>
         </div>
-        <v-row>
+        <v-row class="justify-center">
           <v-col
-            cols="4"
+            cols="12"
+            lg="4"
+            md="7"
             v-for="(card, i) in data.cards"
             :key="i"
-            class="d-flex flex-column"
+            class="d-flex flex-column cards__col"
           >
             <Card :card="card"/>
           </v-col>
@@ -75,6 +77,16 @@ export default class Cards extends Vue {
       background-image: url("~@/assets/images/blob2.svg");
       background-size: 300px;
       transform: rotate(340deg);
+    }
+  }
+  @media (max-width: 959px) {
+    .cards__col {
+      max-width: 500px;
+    }
+  }
+  @media (max-width: 599px) {
+    .cards__wrapper::after {
+      transform: rotate(20deg) scaleX(-1);
     }
   }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="contact">
+  <div class="contact pt-15">
     <div class="contact__image-wrapper">
       <v-img
         :src="contact.image.src"
