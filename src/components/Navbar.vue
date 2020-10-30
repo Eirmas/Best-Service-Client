@@ -15,21 +15,40 @@
         </v-toolbar-title>
       </router-link>
       <v-spacer></v-spacer>
-      <router-link
+      <template
         v-for="(button, i) in buttons"
-        :to="button.link.url"
-        :key="i"
-        class="text-decoration-none d-none d-sm-none d-md-block d-lg-block d-xl-block"
       >
-        <v-btn
-          :color="button.bg"
-          :dark="button.dark"
-          class="ml-5 btn"
-          elevation="0"
+        <router-link
+          v-if="!button.link.external"
+          :to="button.link.url"
+          :key="i"
+          class="text-decoration-none d-none d-sm-none d-md-block d-lg-block d-xl-block"
         >
-          <span>{{ button.text }}</span>
-        </v-btn>
-      </router-link>
+          <v-btn
+            :color="button.bg"
+            :dark="button.dark"
+            class="ml-5 btn"
+            elevation="0"
+          >
+            <span>{{ button.text }}</span>
+          </v-btn>
+        </router-link>
+        <a
+          v-else
+          :href="button.link.url"
+          :key="i"
+          class="text-decoration-none d-none d-sm-none d-md-block d-lg-block d-xl-block"
+        >
+          <v-btn
+            :color="button.bg"
+            :dark="button.dark"
+            class="ml-5 btn"
+            elevation="0"
+          >
+            <span>{{ button.text }}</span>
+          </v-btn>
+        </a>
+      </template>
       <v-app-bar-nav-icon
         class="d-block d-sm-block d-md-none d-lg-none d-xl-none"
         @click.stop="drawer = !drawer"
@@ -86,7 +105,7 @@ export default class Navbar extends Vue {
       dark: false,
       link: {
         external: false,
-        url: '#tjenester'
+        url: '/#tjenester'
       }
     },
     {
@@ -95,7 +114,7 @@ export default class Navbar extends Vue {
       dark: false,
       link: {
         external: false,
-        url: '#om-oss'
+        url: '/#om-oss'
       }
     },
     {
@@ -104,7 +123,7 @@ export default class Navbar extends Vue {
       dark: false,
       link: {
         external: false,
-        url: '#kontakt'
+        url: '/#kontakt'
       }
     },
     {
@@ -113,7 +132,7 @@ export default class Navbar extends Vue {
       dark: true,
       link: {
         external: true,
-        url: 'https://google.com'
+        url: 'http://best-server.no:8088/common/login.php'
       }
     }
   ]

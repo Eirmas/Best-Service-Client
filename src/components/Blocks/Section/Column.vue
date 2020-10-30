@@ -1,8 +1,8 @@
 <template>
   <div
-    v-if="type === BlockSection.TEXT && data.heading && data.text"
+    v-if="type === BlockSection.TEXT && data.text"
   >
-    <h2 class="pb-4 blue--text">{{ data.heading }}</h2>
+    <h2 class="pb-4 blue--text" v-if="data.heading">{{ data.heading }}</h2>
     <div
       v-for="(text, i) in data.text"
       :key="i"

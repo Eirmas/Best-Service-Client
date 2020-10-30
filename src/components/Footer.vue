@@ -101,24 +101,24 @@
                 </li>
                 <li>
                   <router-link
-                    to="/#tjenester"
+                    to="/#kontakt"
                   >
                     <span class="blue--text">Kjørekontor</span>
                   </router-link>
                 </li>
                 <li>
-                  <router-link
-                    to="/#kontakt"
+                  <a
+                    href="mailto:post@best-service.no"
                   >
                     <span class="blue--text">Postboks</span>
-                  </router-link>
+                  </a>
                 </li>
                 <li>
-                  <router-link
-                    to="/#kontakt"
+                  <a
+                    href="tel:+4722221433"
                   >
                     <span class="blue--text">Sentraltelefon</span>
-                  </router-link>
+                  </a>
                 </li>
               </ul>
             </div>
@@ -129,7 +129,7 @@
           <v-col>
             <p
               class="text-center blue--text app__footer-copyright pt-5 mb-2"
-            >Copyright 2020 Best Service All Rights Reserved
+            >Copyright {{ (new Date()).getFullYear() }} Best Service All Rights Reserved
             </p>
           </v-col>
         </v-row>

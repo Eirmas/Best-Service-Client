@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { load } from 'recaptcha-v3'
 
 export interface Destination {
     address: string;
@@ -28,26 +29,34 @@ export default class Mail {
       this.mail = mail
     }
 
-    send = async (token: string): Promise<{ status: boolean; msg: string }> => {
-      return await axios.post(process.env.VUE_APP_EMAIL_ENDPOINT, {
-        recaptcha: {
-          response: token
-        },
-        mail: {
-          subject: this.mail.subject,
-          content: this.createMailTemplate(this.mail)
+    send = async (): Promise<{ data: { status: boolean; msg?: string } }> => {
+      try {
+        const token = await this.getToken()
+        if (token) {
+          return await axios.post(process.env.VUE_APP_EMAIL_ENDPOINT, {
+            recaptcha: {
+              token: token
+            },
+            mail: {
+              subject: this.mail.subject,
+              contents: this.createMailTemplate(this.mail)
+            }
+          })
+        } else {
+          return {
+            data: { status: false, msg: 'no-token' }
+          }
         }
-      }).then((res) => {
+      } catch (e) {
         return {
-          status: res.data.status || false,
-          msg: res.data.msg || 'En feil oppstod'
+          data: { status: false, msg: e }
         }
-      }).catch((err) => {
-        return {
-          status: false,
-          msg: err
-        }
-      })
+      }
+    }
+
+    getToken = async () => {
+      const recaptcha = await load(process.env.VUE_APP_SITE_KEY, { autoHideBadge: true })
+      return await recaptcha.execute('login')
     }
 
     createMailTemplate = (mail: MailInterface): string => {

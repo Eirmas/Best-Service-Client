@@ -152,7 +152,8 @@ export default class Index extends Vue {
       type: BlockType.SCHEMA,
       data: {
         id: 'skjema',
-        background: 'white'
+        background: 'white',
+        selected: 'Transport'
       }
     },
     {

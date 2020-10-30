@@ -15,7 +15,6 @@ import { Route } from 'vue-router'
 })
 export default class App extends Vue {
   created () {
-    this.$recaptchaLoaded().then(() => this.$recaptchaInstance.hideBadge())
     this.updatePageTitle(this.$router.currentRoute)
   }
 

@@ -14,14 +14,21 @@
     </div>
     <v-card-title class="justify-center blue--text">{{ card.title }}</v-card-title>
     <v-card-text class="flex">{{ card.text }}</v-card-text>
-    <v-card-actions>
-      <v-btn
-        dark
-        color="orange"
-        class="px-5"
+    <v-card-actions
+      v-if="card.button"
+    >
+      <router-link
+        :to="card.button.href"
+        class="text-decoration-none"
       >
-        {{ card.button.text }}
-      </v-btn>
+        <v-btn
+          dark
+          color="orange"
+          class="px-5"
+        >
+          {{ card.button.text }}
+        </v-btn>
+      </router-link>
     </v-card-actions>
   </v-card>
 </template>
