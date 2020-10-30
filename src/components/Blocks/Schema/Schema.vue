@@ -2,7 +2,7 @@
     <div
       :id="data.id || false"
       :class="data.background ? data.background : ''"
-      style="background:white;"
+      style="background:white;padding-bottom: 18rem; padding-top: 5rem;"
     >
       <v-container
         style="max-width:900px;"
@@ -35,6 +35,7 @@
                 >
                   <Form
                     :onComplete="animateToggle"
+                    :selectedProp="data.selected"
                   />
                 </div>
               </v-card>
@@ -111,7 +112,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 import { Prop } from 'vue-property-decorator'
-import { BlockData } from '@/components/types'
+import { BlockSchemaData } from '@/components/types'
 
 gsap.registerPlugin(ScrollTrigger)
 gsap.registerPlugin(ScrollToPlugin)
@@ -127,7 +128,7 @@ interface VueElement extends Vue {
   }
 })
 export default class Schema extends Vue {
-  @Prop() data!: BlockData
+  @Prop() data!: BlockSchemaData
   $refs!: {
     form: VueElement;
     scheme: HTMLElement;
