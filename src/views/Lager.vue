@@ -64,7 +64,7 @@ export default class Lager extends Vue {
           type: BlockSection.IMAGE,
           data: {
             src: require('@/assets/images/image1.jpg'),
-            alt: 'Litt av Best Service\'s utvalg av kjøretøy'
+            alt: 'Litt av BEST SERVICE\'s utvalg av kjøretøy'
           }
         }
       }

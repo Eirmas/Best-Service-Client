@@ -34,7 +34,7 @@
     <v-img
       :src="data.src"
       :alt="data.alt || 'Bilde'"
-      :lazy-src="data.src"
+      eager
       aspect-ratio="1.8"
     />
   </v-card>

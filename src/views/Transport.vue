@@ -64,7 +64,7 @@ export default class Transport extends Vue {
           type: BlockSection.IMAGE,
           data: {
             src: require('@/assets/images/image1.jpg'),
-            alt: 'Litt av Best Service\'s utvalg av kjøretøy'
+            alt: 'Litt av BEST SERVICE\'s utvalg av kjøretøy'
           }
         }
       }
@@ -80,7 +80,7 @@ export default class Transport extends Vue {
             title: 'Lastebiler',
             text: 'Vi har lastebiler av alle slag. Fra lett lastebiler med løfelem til tung lastebil med sideåpning',
             image: {
-              src: require('@/assets/images/transport/lastebil.jpg'),
+              src: require('@/assets/images/transport/iveco.svg'),
               alt: 'Lastebil'
             },
             button: {
@@ -92,7 +92,7 @@ export default class Transport extends Vue {
             title: 'Varebiler',
             text: 'Vi har flotte varebiler for deg som trenger litt mer plass.',
             image: {
-              src: require('@/assets/images/transport/varebil.jpg'),
+              src: require('@/assets/images/transport/vito.svg'),
               alt: 'Varebil'
             },
             button: {
@@ -104,7 +104,7 @@ export default class Transport extends Vue {
             title: 'Budbiler',
             text: 'Våre budbiler og andre kjøretøyer stilles klar innen 2 timer etter booking om ikke annet avtales. Ta kontakt så finner vi det rette for deg!',
             image: {
-              src: require('@/assets/images/transport/budbil.jpg'),
+              src: require('@/assets/images/transport/caddy.svg'),
               alt: 'Budbil'
             },
             button: {
@@ -141,7 +141,7 @@ export default class Transport extends Vue {
                 icon: 'checkmark'
               },
               {
-                content: 'Fraktbrev, merkelapper og fakturaer',
+                content: 'Webløsninger med fraktbrev, merkelapper og fakturaer',
                 icon: 'checkmark'
               },
               {
@@ -164,7 +164,7 @@ export default class Transport extends Vue {
             title: 'Lett lastebil',
             text: 'Våre lett lastebiler har 8 pallers skap, løftelem og kapasitet for nyttelast opp til 900kg',
             image: {
-              src: require('@/assets/images/truck.svg'),
+              src: require('@/assets/images/transport/sprinter.svg'),
               alt: 'Lett lastebil'
             }
           },
@@ -172,7 +172,7 @@ export default class Transport extends Vue {
             title: 'Lastebil',
             text: 'Våre lastebiler har 15 pallers skap, løftelem og kapasitet for nyttelast opp til 2500kg',
             image: {
-              src: require('@/assets/images/truck.svg'),
+              src: require('@/assets/images/transport/iveco.svg'),
               alt: 'Lastebil'
             }
           },
@@ -180,40 +180,11 @@ export default class Transport extends Vue {
             title: 'Tung lastebil',
             text: 'Våre tung lastebiler har 18 pallers skap, sideåpning, løftelem, elektrisk pallejekk for tunge paller og kapasitet for nyttelast opp til 9000 kg',
             image: {
-              src: require('@/assets/images/truck.svg'),
+              src: require('@/assets/images/transport/scana.svg'),
               alt: 'Tung lastebil'
             }
           }
         ]
-      }
-    },
-    {
-      type: BlockType.SECTION,
-      data: {
-        id: 'varebil',
-        background: 'white',
-        blob: false,
-        left: {
-          type: BlockSection.TEXT,
-          data: {
-            heading: 'Bud- og varebil',
-            text: [
-              {
-                content: 'Vi i Best Service skal være best på gjennomføring, punktlighet, kvalitet og service. Oppgavene utføres til fornuftige og konkurransedyktige priser og vi har dyktige, løsningsorienterte serviceinnstilte medarbeidere.'
-              },
-              {
-                content: '<i>Senk skuldrene - vi fikser!</i>'
-              }
-            ]
-          }
-        },
-        right: {
-          type: BlockSection.IMAGE,
-          data: {
-            src: require('@/assets/images/image1.jpg'),
-            alt: 'Litt av Best Service\'s utvalg av kjøretøy'
-          }
-        }
       }
     },
     {
@@ -228,7 +199,7 @@ export default class Transport extends Vue {
             title: 'Standard',
             text: 'Alle oppdrag utføres innenfor 2 timer etter mottatt booking om ikke annet avtales (Gjelder Oslo). Bestemte tidsrom kan avtales ned til innenfor 1 times luke for opphenting eller utlevering.',
             image: {
-              src: require('@/assets/images/transport/lastebil.jpg'),
+              src: require('@/assets/images/truck.svg'),
               alt: 'Lastebil'
             }
           },
@@ -236,15 +207,15 @@ export default class Transport extends Vue {
             title: 'ASAP',
             text: 'Alle oppdrag utføres så snart som mulig. Bestemte klokkeslett med eksakt oppmøte eller levering',
             image: {
-              src: require('@/assets/images/transport/varebil.jpg'),
+              src: require('@/assets/images/transport/asap.svg'),
               alt: 'Varebil'
             }
           },
           {
             title: 'Økonomi',
-            text: 'o\tVed samlasting av større antall sendinger. Utlevering samme dag ved booking før 11.00',
+            text: 'Ved samlasting av større antall sendinger. Utlevering samme dag ved booking før 11.00',
             image: {
-              src: require('@/assets/images/transport/budbil.jpg'),
+              src: require('@/assets/images/transport/econ.svg'),
               alt: 'Budbil'
             }
           }

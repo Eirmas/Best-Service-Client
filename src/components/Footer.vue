@@ -10,6 +10,7 @@
                 src="@/assets/logo.svg"
                 alt="Best Service"
                 max-width="230"
+                eager
                 class="ma-auto"
                 style="z-index: 10;"
               />
@@ -129,7 +130,7 @@
           <v-col>
             <p
               class="text-center blue--text app__footer-copyright pt-5 mb-2"
-            >Copyright {{ (new Date()).getFullYear() }} Best Service All Rights Reserved
+            >Copyright {{ (new Date()).getFullYear() }} BEST SERVICE All Rights Reserved
             </p>
           </v-col>
         </v-row>
@@ -167,6 +168,18 @@ export default class Footer extends Vue {
       background-size: contain;
       transform: rotate(-160deg);
     }
+    &:before {
+      content: '';
+      z-index: 1;
+      width: 450px;
+      height: 450px;
+      position: absolute;
+      left: -140px;
+      bottom: -80px;
+      background-image: url("~@/assets/images/blob3.svg");
+      background-position: center;
+      background-size: contain;
+    }
     .app__footer-content-wrapper {
       background: #f1faff;
       background: linear-gradient(180deg, #f1faff 0%, #ffffff 100%);
@@ -198,17 +211,6 @@ export default class Footer extends Vue {
         }
         .app__footer-copyright {
           font-weight: 500;
-        }
-        &:after {
-          content: '';
-          width: 450px;
-          height: 450px;
-          position: absolute;
-          left: -320px;
-          bottom: -80px;
-          background-image: url("~@/assets/images/blob3.svg");
-          background-position: center;
-          background-size: contain;
         }
       }
     }
@@ -257,8 +259,13 @@ export default class Footer extends Vue {
     }
   }
   @media (max-width: 500px) {
-    .app__footer .app__footer-angle::after {
-      transform: skewY(7deg);
+    .app__footer {
+      &:before {
+        display: none;
+      }
+      .app__footer-angle::after {
+        transform: skewY(7deg);
+      }
     }
     .app__footer-list ul {
       padding-left: 3rem;

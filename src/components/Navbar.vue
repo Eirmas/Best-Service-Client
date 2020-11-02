@@ -11,7 +11,11 @@
       <router-link
         to="/">
         <v-toolbar-title>
-          <v-img src="../assets/logo.svg" alt="Best Service"/>
+          <v-img
+            src="../assets/logo.svg"
+            alt="BEST SERVICE"
+            eager
+          />
         </v-toolbar-title>
       </router-link>
       <v-spacer></v-spacer>

@@ -33,7 +33,7 @@ export default class Mail {
       try {
         const token = await this.getToken()
         if (token) {
-          return await axios.post(process.env.VUE_APP_EMAIL_ENDPOINT, {
+          const data = {
             recaptcha: {
               token: token
             },
@@ -41,7 +41,8 @@ export default class Mail {
               subject: this.mail.subject,
               contents: this.createMailTemplate(this.mail)
             }
-          })
+          }
+          return await axios.post(process.env.VUE_APP_EMAIL_ENDPOINT, data)
         } else {
           return {
             data: { status: false, msg: 'no-token' }
@@ -62,8 +63,6 @@ export default class Mail {
     createMailTemplate = (mail: MailInterface): string => {
       return `
         <div>
-            <h2>${mail.subject}</h3>
-            <br>
             <h4>Kunde</h4>
             <p>Navn: ${mail.name}</p>
             <p>Telefonnummer: ${mail.phone}</p>
