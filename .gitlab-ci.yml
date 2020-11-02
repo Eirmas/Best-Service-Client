@@ -22,10 +22,10 @@ build:
   script:
     - yarn install
     - yarn build
-    - tar -czf /artifact.tar.gz/.dist .
+    - tar -czf artifact.tar.gz ./dist
     
 
-Production:
+.Production:
   image: alpine
   stage: deploy
   environment:
