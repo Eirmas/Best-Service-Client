@@ -38,15 +38,14 @@ build:
    - mkdir -p ~/.ssh
    - chmod 700 ~/.ssh
   script:
-   - scp -o StrictHostKeyChecking=no artifact.tar.gz bestservice@webhost.ironlions.fi:~/public_html
+   - scp -o StrictHostKeyChecking=no artifact.tar.gz bestservice@webhost.ironlions.fi:~/
    - >
      ssh -o StrictHostKeyChecking=no bestservice@webhost.ironlions.fi "
-       cd ~/public_html/;
-       rm -rf temp && mkdir temp;
-       tar zxf artifact.tar.gz -C temp;
-       rm -rf artifact.tar.gz node_modules dist package.json;
-       mv temp/* .;
-       rm -rf temp;
+       tar zxf artifact.tar.gz -C deploy;
+       cp public_html/.htaccess ./ht.tmp;
+       rm -rf artifact.tar.gz public_html;
+       mv deploy public_html;
+       mv ./ht.tmp public_html/.htaccess;
      "
   #when: manual
   #only:
