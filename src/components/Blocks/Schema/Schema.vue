@@ -192,7 +192,6 @@ export default class Schema extends Vue {
   }
 
   onResize () {
-    console.log('Resize')
     if (this.timeline) {
       if (this.timeline.isActive()) {
         if (!this.timeline.paused()) {
