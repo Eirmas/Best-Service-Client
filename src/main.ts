@@ -9,7 +9,7 @@ Vue.config.productionTip = false
 
 Vue.use(VueAnalytics, {
   id: process.env.VUE_APP_ANALYTICS_ID,
-  sendHitTask: process.env.VUE_APP_NODE_ENV === 'production',
+  sendHitTask: process.env.NODE_ENV === 'production',
   router
 })
 
