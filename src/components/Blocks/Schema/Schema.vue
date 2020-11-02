@@ -1,11 +1,10 @@
 <template>
     <div
       :id="data.id || false"
-      :class="data.background ? data.background : ''"
-      style="background:white;"
+      :class="[data.background ? data.background : '', 'py-16']"
     >
       <v-container
-        style="max-width:980px;"
+        style="max-width:900px;"
       >
         <div>
           <h1 class="text-center pb-15 blue--text">Kom i gang</h1>
@@ -35,6 +34,7 @@
                 >
                   <Form
                     :onComplete="animateToggle"
+                    :selectedProp="data.selected"
                   />
                 </div>
               </v-card>
@@ -111,7 +111,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 import { Prop } from 'vue-property-decorator'
-import { BlockData } from '@/components/types'
+import { BlockSchemaData } from '@/components/types'
 
 gsap.registerPlugin(ScrollTrigger)
 gsap.registerPlugin(ScrollToPlugin)
@@ -127,7 +127,7 @@ interface VueElement extends Vue {
   }
 })
 export default class Schema extends Vue {
-  @Prop() data!: BlockData
+  @Prop() data!: BlockSchemaData
   $refs!: {
     form: VueElement;
     scheme: HTMLElement;
@@ -308,12 +308,22 @@ export default class Schema extends Vue {
       timeline.to(form.el, {
         height: `${content.height}px`,
         ease: 'bounce',
+        duration: 1
+      })
+      timeline.to(form.el, {
+        height: 'unset',
+        ease: 'bounce',
         duration: 1,
         onComplete: () => {
           timeline.pause()
         }
       })
       // Down
+      timeline.to(form.el, {
+        height: `${content.height}px`,
+        ease: 'bounce',
+        duration: 0
+      })
       timeline.to(window, {
         duration: 0.5,
         ease: 'ease-in-out',
@@ -479,6 +489,10 @@ export default class Schema extends Vue {
         margin: auto 0;
         overflow-y: hidden;
         top: 50%;
+        -webkit-box-shadow: 0 20px 70px 0 rgba(116,134,177,0.2) !important;
+        -moz-box-shadow: 0 20px 70px 0 rgba(116,134,177,0.2) !important;
+        box-shadow: 0 20px 70px 0 rgba(116,134,177,0.2) !important;
+        border: 1px solid #F3D4BD;
         transform: translateY(-50%) scale(1);
         .schema__form-content {
           padding: 1.875rem 2.675rem;
@@ -507,7 +521,7 @@ export default class Schema extends Vue {
           top: -1px;
           height: 90%;
           position: absolute;
-          background-color: #D2D2D2;
+          background-color: #E8A27C;
         }
       }
       .schema__letter-top {
@@ -522,6 +536,11 @@ export default class Schema extends Vue {
           height: 100%;
         }
       }
+    }
+  }
+  @media (max-width: 599px) {
+    .schema__form-content {
+      padding: 1rem !important;
     }
   }
 </style>

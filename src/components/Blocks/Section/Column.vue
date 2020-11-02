@@ -1,8 +1,8 @@
 <template>
   <div
-    v-if="type === BlockSection.TEXT && data.heading && data.text"
+    v-if="type === BlockSection.TEXT && data.text"
   >
-    <h2 class="pb-4 blue--text">{{ data.heading }}</h2>
+    <h2 class="pb-4 blue--text" v-if="data.heading">{{ data.heading }}</h2>
     <div
       v-for="(text, i) in data.text"
       :key="i"
@@ -15,7 +15,7 @@
         <v-icon v-text="`$vuetify.icons.${text.icon}`"/>
       </div>
       <div>
-        <span v-html="text.content" />
+        <span class="blue--text" v-html="text.content" />
       </div>
     </div>
     <v-btn
@@ -34,7 +34,7 @@
     <v-img
       :src="data.src"
       :alt="data.alt || 'Bilde'"
-      :lazy-src="data.src"
+      eager
       aspect-ratio="1.8"
     />
   </v-card>
@@ -58,12 +58,14 @@ export default class Column extends Vue {
 
 <style lang="scss">
   .section__left .column__img {
-    border-radius: 10px 50px 10px 10px !important;
+    border-radius: 10px 50px 10px 10px;
+    z-index: 0;
     &:after {
       content: '';
       width: 70px;
       height: 70px;
       left: -30px;
+      z-index: -1;
       bottom: -20px;
       background-image: url('~@/assets/images/circle-orange.svg');
       background-position: center;
@@ -85,7 +87,7 @@ export default class Column extends Vue {
   }
 
   .section__right .column__img {
-    border-radius: 50px 10px 10px 10px !important;
+    border-radius: 50px 10px 10px 10px;
     &:before {
       content: '';
       width: 70px;
@@ -113,5 +115,15 @@ export default class Column extends Vue {
   .column__img {
     position: relative;
     z-index: 1;
+  }
+  @media (max-width: 599px) {
+    .column__img {
+      box-shadow: none;
+      border-radius: 10px 10px 10px 10px !important;
+
+      &:before, &:after {
+        visibility: hidden;
+      }
+    }
   }
 </style>

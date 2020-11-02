@@ -1,11 +1,12 @@
 <template>
-  <div class="contact">
+  <div class="contact pt-15">
     <div class="contact__image-wrapper">
       <v-img
         :src="contact.image.src"
         :alt="contact.image.alt"
         height="130"
         width="130"
+        eager
         class="contact__image"
       />
     </div>
@@ -21,13 +22,14 @@
             <div class="contact__info-icon text-center">
               <v-icon small v-text="'$vuetify.icons.phone'"/>
             </div>
-            <span>{{ parsePhoneNumber(contact.phone) }}</span>
+            <span>
+              <a :href="`tel:+47${contact.phone}`">{{ parsePhoneNumber(contact.phone) }}</a> / <a :href="`tel:+47${22221433}`">{{ parsePhoneNumber(22221433) }}</a></span>
           </div>
           <div class="contact__info-row">
             <div class="contact__info-icon text-center">
               <v-icon small v-text="'$vuetify.icons.mail'"/>
             </div>
-            <span>{{ contact.email }}</span>
+            <span><a :href="`mailto:${contact.email}`">{{ contact.email }}</a></span>
           </div>
         </div>
       </div>
@@ -86,10 +88,16 @@ export default class Contact extends Vue {
         border-radius: 4px;
       }
       span {
-        color: #4C5274;
         line-height: 30px;
         font-weight: 600;
         padding-left: 1rem;
+        a {
+          text-decoration: none;
+          color: #4C5274;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
       }
       &:last-child {
         padding-bottom: 0;

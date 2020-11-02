@@ -4,7 +4,7 @@ export interface Image {
 }
 
 export interface SectionText {
-  heading: string;
+  heading?: string;
   text: {
     content: string;
     icon?: string;
@@ -19,7 +19,7 @@ export interface Link {
 
 export interface Block {
   type: BlockType;
-  data?: BlockSectionData | BlockCardsData | BlockContactsData;
+  data?: BlockSectionData | BlockCardsData | BlockContactsData | BlockSchemaData;
 }
 
 export enum BlockType {
@@ -34,7 +34,7 @@ export interface Card {
   title: string;
   image: Image;
   text: string;
-  button: Link;
+  button?: Link;
 }
 
 export interface Contact {
@@ -49,6 +49,10 @@ export interface BlockContactsData extends BlockData {
   title: string;
   caption?: string;
   contacts: Contact[];
+}
+
+export interface BlockSchemaData extends BlockData {
+  selected?: string;
 }
 
 export interface BlockCardsData extends BlockData {
