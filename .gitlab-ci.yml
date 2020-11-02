@@ -22,7 +22,7 @@ build:
   script:
     - yarn install
     - yarn build
-    - tar -czf /tmp/artifact.tar.gz/dist .
+    - tar -czf artifact.tar.gz ./dist
     
 
 .Production:
@@ -38,9 +38,9 @@ build:
    - mkdir -p ~/.ssh
    - chmod 700 ~/.ssh
   script:
-   - scp -o StrictHostKeyChecking=no artifact.tar.gz studiepo@webhost.ironlions.fi:~/public_html
+   - scp -o StrictHostKeyChecking=no artifact.tar.gz bestservice@webhost.ironlions.fi:~/public_html
    - >
-     ssh -o StrictHostKeyChecking=no studiepo@webhost.ironlions.fi "
+     ssh -o StrictHostKeyChecking=no bestservice@webhost.ironlions.fi "
        cd ~/public_html/;
        rm -rf temp && mkdir temp;
        tar zxf artifact.tar.gz -C temp;
