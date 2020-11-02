@@ -76,10 +76,7 @@ export default class Section extends Vue {
   }
   @media (max-width: 599px) {
     .blob::before {
-      transform: rotate(150deg);
-      left: unset;
-      right: -100px;
-      top: -30px;
+      display: none;
     }
   }
 </style>

@@ -9,6 +9,7 @@
         :alt="card.image.alt"
         max-height="150"
         contain
+        eager
         class="justify-center align-center text-center"
       />
     </div>

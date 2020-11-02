@@ -1,8 +1,7 @@
 <template>
     <div
       :id="data.id || false"
-      :class="data.background ? data.background : ''"
-      style="background:white;padding-bottom: 18rem; padding-top: 5rem;"
+      :class="[data.background ? data.background : '', 'py-16']"
     >
       <v-container
         style="max-width:900px;"
@@ -537,6 +536,11 @@ export default class Schema extends Vue {
           height: 100%;
         }
       }
+    }
+  }
+  @media (max-width: 599px) {
+    .schema__form-content {
+      padding: 1rem !important;
     }
   }
 </style>

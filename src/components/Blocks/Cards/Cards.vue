@@ -1,7 +1,7 @@
 <template>
     <div
       :id="data.id || false"
-      :class="[data.background ? data.background : '', 'cards__wrapper pb-10']"
+      :class="[data.background ? data.background : '', 'cards__wrapper py-16']"
     >
       <v-container>
         <div class="cards__head pb-10">
