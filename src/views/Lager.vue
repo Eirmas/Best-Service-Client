@@ -124,7 +124,7 @@ export default class Lager extends Vue {
                 icon: 'checkmark'
               },
               {
-                content: 'Fraktbrev, merkelapper og fakturaer',
+                content: 'Webløsninger med fraktbrev, merkelapper og fakturaer',
                 icon: 'checkmark'
               },
               {

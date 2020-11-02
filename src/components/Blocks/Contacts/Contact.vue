@@ -50,8 +50,8 @@ export default class Contact extends Vue {
   @Prop() contact!: ContactInterface
 
   parsePhoneNumber = (num: number): string => {
-    const match = num.toString().match(/^(\d{3})(\d{2})(\d{3})$/)
-    return (match) ? `${match[1]} ${match[2]} ${match[3]}` : num.toString()
+    const match = num.toString().match(/^(\d{2})(\d{2})(\d{2})(\d{2})$/)
+    return (match) ? `${match[1]} ${match[2]} ${match[3]} ${match[4]}` : num.toString()
   }
 }
 </script>
