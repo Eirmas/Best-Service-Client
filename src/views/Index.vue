@@ -9,9 +9,7 @@
         :key="i"
       />
     </v-main>
-    <div class="app__footer">
-      <div />
-    </div>
+    <Footer />
   </div>
 </template>
 
@@ -26,6 +24,7 @@ import Schema from '@/components/Blocks/Schema/Schema.vue'
 import Head from '@/components/Head.vue'
 import { page } from 'vue-analytics'
 import Contacts from '@/components/Blocks/Contacts/Contacts.vue'
+import Footer from '@/components/Footer.vue'
 
   @Component({
     name: 'Index',
@@ -35,10 +34,12 @@ import Contacts from '@/components/Blocks/Contacts/Contacts.vue'
       Section,
       Head,
       Cards,
-      Contacts
+      Contacts,
+      Footer
     }
   })
 export default class Index extends Vue {
+  hour: number = (new Date()).getHours()
   blocks: Block[] = [
     {
       type: BlockType.HEAD
@@ -58,7 +59,7 @@ export default class Index extends Vue {
                 icon: 'checkmark'
               },
               {
-                content: 'Våre lojale medarbeidere gjør oppdraget som om det var for deres egen mor. Fra A - B uten snarveier',
+                content: 'Våre lojale medarbeidere gjør oppdraget med høy kvalitet. Fra A - B uten omveier',
                 icon: 'checkmark'
               }
             ]
@@ -68,7 +69,7 @@ export default class Index extends Vue {
           type: BlockSection.IMAGE,
           data: {
             src: require('@/assets/images/image1.jpg'),
-            alt: 'Litt av Best Service\'s utvalg av kjøretøy'
+            alt: 'Litt av BEST SERVICE\'s utvalg av kjøretøy'
           }
         }
       }
@@ -78,26 +79,14 @@ export default class Index extends Vue {
       data: {
         id: 'tjenester',
         title: 'Våre tjenester',
-        caption: 'Vi spesialiserer oss på logistikktjenester',
+        caption: 'Vi spesialiserer oss på transporttjenester - og mye mer',
         cards: [
-          {
-            title: 'Avfall og makulering',
-            text: 'Vi tilbyr fjerning og transport av de aller fleste typer avfall, og har samarbeidsavtale med sentrale aktører i Oslo-området. Vårt fokus er spesielt på EE-Avfall og sikkerhetsmakulering.',
-            image: {
-              src: require('@/assets/images/waste.svg'),
-              alt: 'Søppelkasse'
-            },
-            button: {
-              text: 'Les mer',
-              href: '/avfall'
-            }
-          },
           {
             title: 'Transport',
             text: 'Vi tilbyr transport med flere forskjellige biltyper. Alt fra små budbiler til tunge lastebilder med sideåpning. Ta kontakt så finner vi det rette for deg.',
             image: {
               src: require('@/assets/images/truck.svg'),
-              alt: 'Illustrasjon av Best Service lastebil fra siden'
+              alt: 'Illustrasjon av BEST SERVICE lastebil fra siden'
             },
             button: {
               text: 'Les mer',
@@ -115,6 +104,18 @@ export default class Index extends Vue {
               text: 'Les mer',
               href: '/lager'
             }
+          },
+          {
+            title: 'Avfall og makulering',
+            text: 'Vi tilbyr fjerning og transport av de aller fleste typer avfall, og har samarbeidsavtale med sentrale aktører i Oslo-området. Vårt fokus er spesielt på EE-Avfall og sikkerhetsmakulering.',
+            image: {
+              src: require('@/assets/images/waste.svg'),
+              alt: 'Søppelkasse'
+            },
+            button: {
+              text: 'Les mer',
+              href: '/avfall'
+            }
           }
         ]
       }
@@ -131,10 +132,10 @@ export default class Index extends Vue {
             heading: 'Om oss',
             text: [
               {
-                content: 'Vi i <span style="font-weight: 500">Best Service</span> skal være best på gjennomføring, punktlighet, kvalitet og service. Oppgavene utføres til fornuftige og konkurransedyktige priser og vi har dyktige, løsningsorienterte serviceinnstilte medarbeidere.'
+                content: 'Vi i BEST SERVICE skal være best på gjennomføring, punktlighet, kvalitet og service. Oppgavene utføres til fornuftige og konkurransedyktige priser og vi har dyktige, løsningsorienterte serviceinnstilte medarbeidere.'
               },
               {
-                content: '<b>Senk skuldrene - vi fikser!</b>'
+                content: '<i>Senk skuldrene - vi fikser!</i>'
               }
             ]
           }
@@ -142,8 +143,8 @@ export default class Index extends Vue {
         right: {
           type: BlockSection.IMAGE,
           data: {
-            src: require('@/assets/images/image1.jpg'),
-            alt: 'Litt av Best Service\'s utvalg av kjøretøy'
+            src: (this.hour > 20 || this.hour < 6) ? require('@/assets/images/nightsky.svg') : require('@/assets/images/landscape.svg'),
+            alt: 'Illustrasjon av BEST SERVICE\'s tung-lastebil'
           }
         }
       }
@@ -152,7 +153,8 @@ export default class Index extends Vue {
       type: BlockType.SCHEMA,
       data: {
         id: 'skjema',
-        background: 'white'
+        background: 'white',
+        selected: 'Transport'
       }
     },
     {
@@ -163,22 +165,12 @@ export default class Index extends Vue {
         title: 'Kontakt oss',
         contacts: [
           {
-            title: 'Daglig Leder',
-            name: 'Svein Werner',
-            email: 'svein@best-service.no',
-            phone: 40691800,
-            image: {
-              src: require('@/assets/images/svein.jpg'),
-              alt: 'Svein Werner'
-            }
-          },
-          {
             title: 'Kjørekontor',
             name: 'Ronald Weiby',
             email: 'ronald@best-service.no',
-            phone: 92893696,
+            phone: 90030621,
             image: {
-              src: require('@/assets/images/svein.jpg'),
+              src: require('@/assets/images/ronald.png'),
               alt: 'Ronald Weiby'
             }
           },
@@ -186,9 +178,9 @@ export default class Index extends Vue {
             title: 'Kjørekontor',
             name: 'Morten Skårstad',
             email: 'morten@best-service.no',
-            phone: 90018275,
+            phone: 91717450,
             image: {
-              src: require('@/assets/images/svein.jpg'),
+              src: require('@/assets/images/morten.png'),
               alt: 'Morten Skårstad'
             }
           }
@@ -204,4 +196,7 @@ export default class Index extends Vue {
 </script>
 
 <style lang="scss">
+  body {
+    overflow: hidden;
+  }
 </style>
