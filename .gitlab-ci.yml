@@ -22,7 +22,7 @@ build:
   script:
     - yarn install
     - yarn build
-    - tar -czf artifact.tar.gz ./dist
+    - tar -czf /tmp/artifact.tar.gz/dist .
     
 
 .Production:
