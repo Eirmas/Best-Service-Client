@@ -270,7 +270,7 @@ export default class Form extends Vue {
 
   clearInputs = (): void => {
     if (this.$refs.form) {
-      // this.$refs.form.reset()
+      this.$refs.form.reset()
       this.formData.service = this.selectedProp
     }
   }
