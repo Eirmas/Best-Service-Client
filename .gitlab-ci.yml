@@ -43,6 +43,7 @@ Production:
    - scp -o StrictHostKeyChecking=no artifact.tar.gz bestservice@webhost.ironlions.fi:~/
    - >
      ssh -o StrictHostKeyChecking=no bestservice@webhost.ironlions.fi "
+       mkdir deploy;
        tar zxf artifact.tar.gz -C deploy;
        cp public_html/.htaccess ./ht.tmp;
        rm -rf artifact.tar.gz public_html;
