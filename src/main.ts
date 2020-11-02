@@ -7,7 +7,7 @@ import store from './store'
 
 Vue.config.productionTip = false
 Vue.use(VueAnalytics, {
-  id: 'UA-180286010-1',
+  id: process.env.VUE_APP_ANALYTICS_ID,
   sendHitTask: process.env.NODE_ENV === 'production',
   router
 })
