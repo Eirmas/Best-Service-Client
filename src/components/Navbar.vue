@@ -136,7 +136,7 @@ export default class Navbar extends Vue {
       dark: true,
       link: {
         external: true,
-        url: 'http://best-server.no:8088/common/login.php'
+        url: 'http://best-server.no/K2/'
       }
     }
   ]

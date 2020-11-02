@@ -85,6 +85,13 @@
                   </router-link>
                 </li>
                 <li>
+                  <a
+                    href="http://best-server.no/K2/"
+                  >
+                    <span class="blue--text">Kundeportal</span>
+                  </a>
+                </li>
+                <li>
                   <router-link
                     to="/#skjema"
                   >
